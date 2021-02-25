@@ -1,0 +1,79 @@
+﻿@Model List<Signup>
+@{
+    ViewData["Title"] = "EmployeeView";
+}
+
+<style>
+        td {
+            width: 24%;
+        }
+
+        input {
+            margin-left: 4%;
+        }
+    </style>
+
+<div class="container">
+    <button class="btn btn-outline-primary"> <a asp-area="" asp-controller="Home" asp-action="EditEmployee"  asp-route-id = "0"> Add New</a></button>
+    <table>
+        <thead>
+            <tr>
+                <td>
+                    Id
+                </td>
+                <td>
+                    Name
+                </td>
+                <td>
+                    Age
+                </td>
+                <td>
+                    Salary
+                </td>
+                <td>
+                    Desination
+                </td>
+                <td>
+                    Partial
+                </td>
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (SignUp item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Id
+                    </td>
+                    <td  >
+                      <a  class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="EditEmployee" asp-route-id="@item.Id">  @item.Name </a>
+                    </td>
+                    <td>
+                        @item.Age
+                    </td>
+                    <td>
+                        @item.Salary
+                    </td>
+                    <td>
+                        @item.Desination
+                    </td>
+                    <td onclick="onClick(@item.Id)">
+                        Edit
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<br />
+
+    <div id="employeeDetails">
+
+    </div>
+    <script>
+        function onClick(id) {
+            $("#employeeDetails").load('/Home/EditEmployee/' + id);
+            //console.log(id);
+        }
+    </script>

@@ -1,0 +1,107 @@
+﻿@Model List<SignUp>
+    @{
+        ViewData["Title"] = "Home Page";
+    }
+    @{
+        var ids = 25;
+    }
+    <style>
+        td {
+            width: 24%;
+        }
+
+        input {
+            margin-left: 4%;
+        }
+    </style>
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <td>
+                        Id
+                    </td>
+                    <td>
+                        Name
+                    </td>
+                    <td>
+                        Age
+                    </td>
+                    <td>
+                        Salary
+                    </td>
+                    <td>
+                        Desination
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (SignUp item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.Id
+                        </td>
+                        <td onclick="onClick(@item.Id)">
+                            @item.Name
+                        </td>
+                        <td>
+                            @item.Age
+                        </td>
+                        <td>
+                            @item.Salary
+                        </td>
+                        <td>
+                            @item.Desination
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div><br />
+    <div>
+        <form>
+            <div class="form-group">
+                <label>
+                    Id
+                </label>
+                <input value="@ids" type="text" placeholder="id" />
+            </div>
+            <div class="form-group">
+                <label>
+                    Name
+                </label>
+                <input value="" type="text" placeholder="Name" />
+            </div>
+            <div class="form-group">
+                <label>
+                    Age
+                </label>
+                <input value="" type="text" placeholder="age" />
+            </div>
+            <div class="form-group">
+                <label>
+                    Salary
+                </label>
+                <input value="" type="text" placeholder="salary" />
+            </div>
+            <div class="form-group">
+                <label>
+                    Designation
+                </label>
+                <input value="" type="text" placeholder="designation" />
+            </div>
+            <button class="btn btn-outline-danger">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function onClick(id) {
+             @ids = id;
+            console.log(id);
+        }
+    </script>
