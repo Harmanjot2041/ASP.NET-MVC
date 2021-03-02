@@ -24,33 +24,41 @@ namespace HarmanMvcPractice.Controllers
             {
                 Id = 1,
                 Name = "Harmanjot",
-                Age = 21,
+                Age = "21",
                 Desination = "UIET",
-                Salary = 300000
+                Salary = 300000,
+                gender =  "male",
+                genderDropdown = 1
             });
             employeeList.Add(new SignUp
             {
                 Id = 2,
                 Name = "Gunika",
-                Age = 21,
+                Age = "21",
                 Desination = "UIET",
-                Salary = 1000000
+                Salary = 1000000,
+                gender= "female",
+                genderDropdown = 3
             });
             employeeList.Add(new SignUp
             {
                 Id = 3,
                 Name = "Venketesh",
-                Age = 21,
+                Age = "21",
                 Desination = "PEC",
-                Salary = 3000000
+                Salary = 3000000,
+                gender = "male",
+                genderDropdown = 1
             });
             employeeList.Add(new SignUp
             {
                 Id = 4,
                 Name = "Abhishek",
-                Age = 21,
+                Age = "21",
                 Desination = "CU",
-                Salary = 600000
+                Salary = 600000,
+                gender = "male",
+                genderDropdown = 2
             });
 
         }
@@ -61,12 +69,14 @@ namespace HarmanMvcPractice.Controllers
            // return Content("Heyyyyyyyyyyyyyyyyyyyyy");
         }
 
-        public IActionResult Privacy()
+        public FileResult Privacy()
         {
-            return View();
+            return File("~/Content/Hashing.pdf","application/pdf");
         }
         public IActionResult EmployeeView()
         {
+           // ViewData.Add("name") = "HARMAN";
+            ViewBag.name = "harman";
             return View(employeeList);
         }
         public IActionResult Content(int id)

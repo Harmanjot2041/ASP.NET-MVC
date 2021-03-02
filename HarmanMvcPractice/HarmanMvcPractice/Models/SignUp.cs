@@ -13,12 +13,21 @@ namespace HarmanMvcPractice.Models
         public string Name { get; set; }
         [Required]
         [Range (0,40, ErrorMessage ="Age should be less than 40 ")]
-        public int Age { get; set; }
+        public string Age { get; set; }
         [Required]
         [Range(0, 4000000, ErrorMessage = "Age should be less than 40 ")]
         public int Salary { get; set; }
         [Required]
         public string Desination { get; set; }
+        [Required]
+        public string gender { get; set; }
+        [Required]
+        public int genderDropdown { get; set; }
+        [Required]
+        public string email { get; set; }
+        [Required]
+        public string password { get; set; }
+
         
     }
 }

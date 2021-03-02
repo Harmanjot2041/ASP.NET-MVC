@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "EmployeeView";
 }
-
+    <h2>@ViewBag.name</h2>
 <style>
         td {
             width: 24%;
@@ -71,6 +71,7 @@
     <div id="employeeDetails">
 
     </div>
+    @*@Html.Partial("_EditEmpployeePartial");*@
     <script>
         function onClick(id) {
             $("#employeeDetails").load('/Home/EditEmployee/' + id);

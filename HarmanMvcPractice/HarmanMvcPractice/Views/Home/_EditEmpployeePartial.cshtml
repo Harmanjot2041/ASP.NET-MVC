@@ -2,9 +2,21 @@
 @*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@{ 
+        var item = new List<SelectListItem>
+    {
+        new SelectListItem () {Text = "select",Value = "0"},
+        new SelectListItem () {Text = "sangrur",Value = "1"},
+        new SelectListItem () {Text = "chandigarh",Value = "2"},
+        new SelectListItem () {Text = "jammu",Value = "3"}
+    };
+
+
+}
+
 @if (Model != null)
 {
-    @using (Html.BeginForm("EditEmployee", "Home", FormMethod.Post)) ;
+    @using (Html.BeginForm("EditEmployee", "Home", FormMethod.Post , new { id = "SignUp"})) ;
     {
         @*<input type="hidden" id="hdnId" value="@Model.Id" />
         <div class="s1">
@@ -31,43 +43,84 @@
             <input type="submit" value="Contact" />
         </div>
         <div>*@
-                <form asp-controller="Home" asp-action="EditEmployee" method="post">
-                    <div class="form-group">
-                        <label>
-                            Id
-                        </label>
-                        <input value="@Model.Id" type="text" placeholder="id" />
+    <form asp-controller="Home" asp-action="EditEmployee" method="post">
+        <div class="form-group">
+            <label>
+                Id
+            </label>
+            <input value="@Model.Id" type="text" id="id" placeholder="id" />
+            @Html.ValidationMessageFor(m => m.Id, "", new { id = "id_error", @class = "text-danger" })
 
-                    </div>
-                    <div class="form-group">
-                        <label>
-                            Name
-                        </label>
-                        <input value="@Model.Name" type="text" placeholder="Name" />
-                    </div>
-                    <div class="form-group">
-                        <label>
-                            Age  
-                        </label>
-                        @Html.TextBoxFor(m => m.Age)
-                        @Html.ValidationMessageFor(m => m.Age, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="form-group">
-                        <label>
-                            Salary
-                        </label>
-                        <input value="@Model.Salary" type="text" placeholder="salary" />
-                    </div>
-                    <div class="form-group">
-                        <label>
-                            Designation
-                        </label>
-                        <input value="@Model.Desination" type="text" placeholder="designation" />
-                    </div>
-                    <button class="btn btn-outline-danger" type="submit">Submit</button>
-                </form>
+        </div>
+        <div class="form-group">
+            <label>
+                Name
+            </label>
+            <input value="@Model.Name" id="name" type="text" placeholder="Name" />
+            @Html.ValidationMessageFor(m => m.Name, "", new { id = "name_error", @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label>
+                Age
+            </label>
+            @Html.TextBoxFor(m => m.Age)
+            @Html.ValidationMessageFor(m => m.Age, "", new { id = "age_error", @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label>
+                Salary
+            </label>
+            <input value="@Model.Salary" id="salary" onchange="HandleChange(id)" type="text" placeholder="salary" />
+            @Html.ValidationMessageFor(m => m.Salary, "", new { id = "salary_error", @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label>
+                Email
+            </label>
+            <input value="" id="email" type="email" onkeyup ="HandleKeyPress(id)" placeholder ="email" />
+            @Html.ValidationMessageFor(m => m.email, "", new { id = "email_error", @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label>
+                Password
+            </label>
+            <input value="" id="password" type="password" placeholder="password" />
+            @Html.ValidationMessageFor(m => m.password, "", new { id = "password_error", @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label>
+                Designation
+            </label>
+            <input value="@Model.Desination" id="desination" type="text" placeholder="designation" />
+            @Html.ValidationMessageFor(m => m.Desination, "", new { id = "desination_error", @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label>Male</label>
+            @Html.RadioButtonFor(m => m.gender, "male")
+            <label>Female</label>
+            @Html.RadioButtonFor(m => m.gender, "female")
+        </div>
+        <div class="form-group">
+            @Html.DropDownListFor(m => m.genderDropdown, item)
+            @Html.ValidationMessageFor(m => m.genderDropdown, "", new { id = "city_error", @class = "text-danger" })
+        </div>
+        <div id = "target" style=" height: 150px;  width: 300px; overflow-y: scroll ">
+            harman harman harman harman harman harman  harman harman harman harman harman harman harman harman harman harman harman
+            harman harman harman harman harman harman harman harman harman harman harman harman harman harman harman harman harman
+            harman harman harman harman harman harman harman harman harman harman harman harman harman harman harman harman harman
+            harman harman harman harman harman harman harman harman harman harman harman harman harman harman harman harman harman
+        </div>
+        <div class="form-group">
+            <label>filter1</label>
+            <input type="checkbox" name="male" />
+            <label>Filter2</label>
+            <input type="checkbox" name="female" />
+        </div>
+        <button class="btn btn-outline-danger" type="button" onclick="handleClick()">Submit</button>
+    </form>
             
     }
 }
 <button class="btn btn-outline-warning"> <a asp-area="" asp-controller="Home" asp-action="EmployeeView"> Back </a></button>
+<script src ="~/js/SignUp.js" ></script>
 
