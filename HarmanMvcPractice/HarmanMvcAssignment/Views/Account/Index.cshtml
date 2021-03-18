@@ -1,0 +1,31 @@
+﻿@model List<Student>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Student List</h1>
+
+<h3>To Perform Modification in Student List , you new to Login First . If Logined Than Click <a asp-action= "Details">Edit</a> To Edit</h3>
+
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th style="width:350px">Student Id </th>
+        <th style="width:406px">Student Name </th>
+        <th style="width:350px">Student Age </th>
+        
+
+    </tr>
+    @foreach (Student d in Model)
+    {
+        <tr>
+            <td>@d.StudentID</td>
+            <td>@d.StudentName</td>
+            <td>@d.Age</td>
+            
+
+
+        </tr>
+
+    }
+</table>
+

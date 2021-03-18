@@ -1,0 +1,42 @@
+﻿@model List<Student>
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1> Students Details</h1>
+<br/>
+<p>
+    <a asp-action="Create">Add New</a>
+</p><br/>
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th style="width:221px">Student Id </th>
+        <th style="width:20%">Student Name </th>
+        <th style="width:20%">Student Age </th>
+        <th style="width:13.33%">Edit</th>
+        <th style="width:13.33%">Details</th>
+        <th style="width:13.33%">Delete</th>
+       
+    </tr>
+    @foreach (Student d in Model)
+    {
+<tr>
+    <td>@d.StudentID</td>
+    <td>@d.StudentName</td>
+    <td>@d.Age</td>
+    <td> @Html.ActionLink("Edit", "Edit", new { id = d.StudentID  })</td>
+    <td> @Html.ActionLink("View", "ShowStudent", new { id = d.StudentID  })</td>
+    <td> <a asp-area="" asp-controller="Account" asp-action="Delete" asp-route-id = "@d.StudentID">Delete</a></td>
+    
+
+</tr>
+
+    }
+</table>
+
+    <div>
+        @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
+        <a asp-action="Index">Back to List</a>
+    </div>
+

@@ -1,0 +1,72 @@
+﻿@model HarmanMvcAssignment.Models.ExtraModel
+
+@{
+    ViewData["Title"] = "ExtraView";
+}
+
+<h1>ExtraView</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ExtraView">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Degsination" class="control-label"></label>
+                <input asp-for="Degsination" class="form-control" />
+                <span asp-validation-for="Degsination" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Salary" class="control-label"></label>
+                <input asp-for="Salary" class="form-control" />
+                <span asp-validation-for="Salary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @Html.DropDownListFor(m => m.StudentGender,
+               new SelectList(Enum.GetValues(typeof(Gender))),
+               "Select Gender")
+                <span asp-validation-for="StudentGender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="ArrivalTime" class="control-label"></label>
+                <input asp-for="ArrivalTime" class="form-control" />
+                <span asp-validation-for="ArrivalTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndTime" class="control-label"></label>
+                <input asp-for="EndTime" class="form-control" />
+                <span asp-validation-for="EndTime" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="RememberMe" /> @Html.DisplayNameFor(model => model.RememberMe)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit"  onclick="onClick()" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Privacy">Back to More</a>
+</div>
+<script>
+    function onClick() {
+        alert("Data Submited Succesfully");
+    }
+</script>
+

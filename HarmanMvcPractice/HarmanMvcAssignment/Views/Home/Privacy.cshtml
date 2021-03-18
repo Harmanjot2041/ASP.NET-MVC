@@ -1,0 +1,81 @@
+﻿@model List<BusinessLayer.Student1>
+    
+<h1>More Mvc Concepts</h1>
+<h5>More Conceptss</h5>
+@Html.ActionLink("Click Here to see More concepts", "ExtraView")
+
+<h6>Student List From Business Layer Class Library through Dependency Injection</h6>
+
+@*<ul class="pagination">
+    <li><a id="1" asp-controller="Home" asp-action="Pagination">1</a></li>
+    <li><a id="2" asp-controller="Home" asp-action="Pagination">2</a></li>
+    <li><a id="3" asp-controller="Home" asp-action="Pagination">3</a></li>
+    <li><a id="4" asp-controller="Home" asp-action="Pagination">4</a></li>
+    <li><a id="5" asp-controller="Home" asp-action="Pagination">5</a></li>
+    <li><a id="6" asp-controller="Home" asp-action="Pagination">6</a></li>
+    <li><a id="7" asp-controller="Home" asp-action="Pagination">7</a></li>
+    <li><a id="8" asp-controller="Home" asp-action="Pagination">8</a></li>
+    <li><a id="9" asp-controller="Home" asp-action="Pagination">9</a></li>
+</ul>*@
+<div class="row">
+    @*<button id="1" asp-controller="Home" asp-action="Pagination">1</button>*@
+
+    <button>@Html.ActionLink("1", "Pagination", new { id = 1 }) </button>
+    <button> @Html.ActionLink("2", "Pagination", new { id = 2 })</button>
+    <button>@Html.ActionLink("3", "Pagination", new { id = 3 })</button>
+    <button> @Html.ActionLink("4", "Pagination", new { id = 4 })</button>
+    <button> @Html.ActionLink("5", "Pagination", new { id = 5 })</button>
+    <button>
+        @Html.ActionLink("6", "Pagination", new { id = 6 })
+    </button>
+    <button>
+        @Html.ActionLink("7", "Pagination", new { id = 7 })
+    </button>
+    <button>
+        @Html.ActionLink("8", "Pagination", new { id = 8 })
+    </button>
+    <button>
+        @Html.ActionLink("9", "Pagination", new { id = 9 })
+    </button>
+    <button>
+        @Html.ActionLink("10", "Pagination", new { id = 10 })
+    </button>
+    <button>
+        @Html.ActionLink("11", "Pagination", new { id = 11 })
+    </button>
+</div>
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th style="width:350px">Student Id </th>
+        <th style="width:406px">Student Name </th>
+        <th style="width:350px">Student Age </th>
+
+
+    </tr>
+    @foreach (BusinessLayer.Student1 d in Model)
+    {
+        <tr>
+            <td>@d.StudentID</td>
+            <td>@d.StudentName</td>
+            <td>@d.Age</td>
+
+
+
+        </tr>
+
+    }
+</table>
+<h5>Cache Implemented </h5>
+<div class="row">
+    <div class="col-md-3">
+        <h3> Current Time: @DateTime.Now.ToString()</h3>
+    </div>
+    <div class="col-md-3">
+        <h3>Cached Time: @ViewBag.time.ToString()</h3>
+    </div>
+</div>
+
+@*@Html.EditorFor(x=>x);*@
+@*@Html.CheckBoxFor(model => model.Gender);*@
+
+
